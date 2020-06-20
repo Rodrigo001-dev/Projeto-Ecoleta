@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado da pesquisa</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Ubuntu:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/search-results.css">
+
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+
+<body>
+
+  <div id="page-search-results">
+
+    {% include "partials/page-header.html" %}
+
+    <main>
+
+      {% if total > 0 %}
+
+        <h4>
+          <strong>{{total}} pontos</strong> encontrados
+        </h4>
+
+        <div class="cards">
+
+          {% for place in places %}
+
+            <div class="card">
+              <img src="{{ place.image }}" alt="{{ place.name }}">
+              <h1>{{ place.name }}</h1>
+              <h3>{{ place.items }}</h3>
+              <p>
+                {{ place.city }}, {{ place.state }} <br />
+                {{ place.address }} <br />
+                {{ place.address2 }}
+              </p>
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+      {% else %}
+
+        <h4><strong>Nenhum</strong> local cadastrado na região selecinada</h4>
+
+      {% endif %}
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
